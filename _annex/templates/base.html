@@ -54,22 +54,8 @@
     <script type="text/javascript" src="//use.typekit.net/ahz1kiy.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
-    <!-- Mathematics Typesetting -->
-    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js" type= "text/javascript">
-           MathJax.Hub.Config({
-           HTML: ["input/TeX","output/HTML-CSS"],
-           TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], equationNumbers: { autoNumber: "AMS" } },
-           extensions: ["tex2jax.js"],
-           jax: ["input/TeX","output/HTML-CSS"],
-           tex2jax: { 
-               inlineMath: [ ['$','$'] ],
-               displayMath: [ ['$$','$$'] ],
-               processEscapes: true },
-           "HTML-CSS": {
-               styles: { ".MathJax .mo, .MathJax .mi": {color: "black ! important"}}
-           }
-       });
-    </script>
+    {% block mathjax %}
+    {% endblock mathjax %}
 
   </body>
 </html>

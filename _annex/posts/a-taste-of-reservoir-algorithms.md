@@ -1,5 +1,6 @@
 title: A Taste of Reservoir Algorithms
 date: 2010-08-10 12:00:00
+has_mathjax: 1
 
 <center>
 <img alt="A Chocolate Sampling" src="http://farm1.static.flickr.com/15/68153223_665dbdf47d_m.jpg">
