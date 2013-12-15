@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<p class="text-center"><h1>{{ page.meta.title }}</h1></p>
+<h1 id="title-spacer">{{ page.meta.title }}</h1>
 <p><i>{{ page.meta.date.strftime('%d %B %Y') }}</i></p>
 <p></p>
+<div class="post">
 {{ page }}
+</div>
 {% endblock %}
