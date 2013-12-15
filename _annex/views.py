@@ -1,6 +1,5 @@
-from flask import render_template, url_for, redirect, request
+from flask import render_template, url_for, Response
 from app import app, pages
-from werkzeug.contrib.atom import AtomFeed
 
 def sorted_posts():
     posts = [page for page in pages if 'date' in page.meta]
@@ -27,15 +26,6 @@ def about():
 
 @app.route('/all.rss.xml')
 def rss_feed():
-    feed = AtomFeed('Articles', feed_url=request.url, url=request.url_root)
-    pages = sorted_posts()
-    for page in pages:
-        feed.add(
-            page.meta['title'],
-            page,
-            content_type='html',
-            author=page.meta.get('author', 'indraniel'),
-            url='/'.join([app.config['FREEZER_BASE_URL'], page.path]),
-            updated=page.meta['date'],
-        )
-    return feed.get_response()
+    posts = sorted_posts()
+    feed = render_template('feed.xml', posts=posts)
+    return Response(feed, mimetype='application/xml')
