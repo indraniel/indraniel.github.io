@@ -1,6 +1,17 @@
 The source to the indraniel.github.io site.  Built upon the [Flask]
 web framework.
 
+Usage
+-----
+
+To render the markdown formatted posts into static html files, do:
+
+    python site.py freeze
+
+To see how all the blog posts render, try:
+
+    python site.py runserver
+
 Licensing
 ---------
 
