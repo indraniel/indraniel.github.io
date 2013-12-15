@@ -14,9 +14,8 @@ def home():
 
 @app.route('/<path:path>/')
 def page(path):
-    print 'Path is: %s' % path
+    print 'Generating post: %s' % path
     page = pages.get_or_404(path)
-    print 'Page is: %s' % page
     return render_template('page.html', page=page)
 
 @app.route('/pages/about/')
