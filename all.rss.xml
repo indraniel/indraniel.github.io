@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Indraniel&#39;s Notebook</title>
+        <description>Indraniel's Notebook</description>
+        <link>http://indraniel.github.io</link>
+        <atom:link href="http://indraniel.github.io/all.rss.xml" rel="self" type="application/rss+xml" />
+        <item>
+            <title>Thinking Basics</title>
+            <description>&lt;blockquote&gt;
+&lt;p&gt;&#34;Education is what survives when what has been learned has been forgotten&#34;&lt;/p&gt;
+&lt;p&gt;&amp;mdash; &lt;cite&gt;B. F. Skinner&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I often feel I&#39;m caught in the prevailing conventional wisdom of the moment and
+lose sight of the fundamentals. Sometimes it&#39;s nice to be reminded of the
+basics.&lt;/p&gt;
+&lt;p&gt;I recently came across &#34;&lt;a href=&#34;http://www.amazon.com/dp/0691156662&#34;&gt;The 5 Elements of Effective Thinking&lt;/a&gt;&#34;. The book,
+written by a couple of mathematicians, describes a set of strategies and habits
+to improve thought, and associates them with the classical elements that were
+once believed to be the essential parts of nature (Earth, Fire, Air &amp;amp; Water).
+While I have not fully read the book, I found the following excerpt from the
+front matter interesting:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Understand deeply&lt;/strong&gt; &lt;em&gt;(Earth)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Don&#39;t face complex issues head-on; first understand simple ideas deeply.
+Clear the clutter and expose what is really important. Be brutally honest about
+what you know and don&#39;t know. Then see what&#39;s missing, identify the gaps, and
+fill them in. Let go of bias, prejudice, and preconcieved notions. There are
+degrees to understanding (it&#39;s not just a yes-or-no proposition) and you can
+heighten yours. Rock-solid understanding is the foundation for success.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Make mistakes&lt;/strong&gt; &lt;em&gt;(Fire)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Fail to succeed. Intentionally get it wrong to inevitably get it even more
+right. Mistakes are great teachers - they highlight unforseen opportunities and
+holes in your understanding. They also show you which way to turn next, and
+they ignite your imagination.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Raise Questions&lt;/strong&gt; &lt;em&gt;(Air)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Constantly create questions to clarify and extend your understanding.
+What&#39;s the real question? Working on the wrong question can waste a
+lifetime. Ideas are in the air - the right questions will bring them out
+and help you see connections that otherwise would have been invisible.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Follow the flow of ideas&lt;/strong&gt; &lt;em&gt;(Water)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Look back to see where ideas came from and then look ahead to discover where
+those ideas may lead. A new idea is a beginning, not an end. Ideas are rare -
+milk them. Following the consequences of small ideas can result in big payoffs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;By mastering these strategies, you can and will change. The classical elements
+of nature included a fifth special element - the &lt;em&gt;quintessential element&lt;/em&gt; - that
+was the changeless matter from which all the heavens were made. Ironically,
+here in our context of thinking and learning, the quintessential element is
+&lt;em&gt;change&lt;/em&gt;.&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt; &lt;b&gt;Change&lt;/b&gt; &lt;em&gt;(The Quintessential Element)&lt;/em&gt;
+    &lt;p&gt;&lt;/p&gt;
+    &lt;p&gt;
+    The unchanging element is change - by mastering the first four elements, you
+    can change the way you think and learn. You can always improve, grow, and
+    extract more out of your education, yourself, and the way you live your life.
+    Change is the universal constant that allows you to get the most out of living
+    and learning.
+    &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;My Father, the ever lifelong learner, regularly practiced many of the above
+notions and would have been an advocate of the techniques.&lt;/p&gt;</description>
+            <pubDate>Tue, 01 Jan 2013 12:00:00 GMT</pubDate>
+            <link>http://indraniel.github.io/thinking-basics/</link>
+            <guid isPermaLink="true">http://indraniel.github.io/thinking-basics/</guid>
+        </item>
+        <item>
+            <title>A Taste of Reservoir Algorithms</title>
+            <description>&lt;p&gt;&lt;center&gt;
+&lt;img alt=&#34;A Chocolate Sampling&#34; src=&#34;http://farm1.static.flickr.com/15/68153223_665dbdf47d_m.jpg&#34;&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Imagine that you are the Chief Chocolate Inspector of a chocolate factory. Your
+job is to ensure that the days production of chocolate by the factory is of
+good quality. Only upon your recommendation will the factory be shipping out
+its days worth of chocolate production to its distribution points.&lt;/p&gt;
+&lt;p&gt;The chocolate factory consists of three adjacent rooms connected together by a
+conveyor belt/assembly line.&lt;/p&gt;
+&lt;p&gt;The first room is where the chocolate pieces are produced and initially placed
+onto the conveyor belt. The factory produces a variety of decadent chocolate
+types simultaneously and randomly places each type onto the conveyor belt.&lt;/p&gt;
+&lt;p&gt;The second adjoining room is where each of the individual chocolate pieces get
+wrapped up. Afterwards, you are given a choice whether to choose that
+particular piece for taste inspection, or ignore it and wait for the next one.&lt;/p&gt;
+&lt;p&gt;The final adjoining room is where the chocolate pieces get packaged together in
+boxes and loaded onto the delivery trucks. The trucks only move upon your
+decision at the end of the day.&lt;/p&gt;
+&lt;p&gt;Your goal, as the Chief Inspector, is to notify the truck drivers if the
+packages are suitable for shipping in as efficient manner as possible. Armed
+with a special selection bin to hold $n$ pieces of chocolate, you decide to
+choose $n$ uniformly random pieces of chocolate out the $N$ total pieces of
+chocolate produced by the factory throughout the day, where $n&amp;lt;&amp;lt;N$. Afterwards,
+you base your taste decision on this random subset.&lt;/p&gt;
+&lt;p&gt;Unfortunately, you have no idea as to how many chocolate entities will be
+passing by on any given day. Some days, the amount of chocolate produced by the
+factory is very high, on others it is pretty low. In other words, you do not
+know what $N$ is beforehand.&lt;/p&gt;
+&lt;p&gt;While you could wait to make the sampling after the days production is done;
+you don’t want to hold up the assembly line making these quality control
+choices. &#34;&lt;a href=&#34;http://en.wikipedia.org/wiki/I_Love_Lucy&#34;&gt;I Love Lucy&lt;/a&gt;&#34; has shown what kind of hijinks can happen if this
+process goes awry.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#39;embed-youtube&#39; style=&#39;text-align:center; display: block;&#39;&gt;
+&lt;iframe class=&#39;youtube-player&#39; type=&#39;text/html&#39; width=&#39;520&#39; height=&#39;323&#39; src=&#39;http://www.youtube.com/embed/8NPzLBSBzPI?version=3&amp;#038;rel=1&amp;#038;fs=1&amp;#038;showsearch=0&amp;#038;showinfo=1&amp;#038;iv_load_policy=1&amp;#038;wmode=transparent&#39; frameborder=&#39;0&#39;&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;h2&gt;What to do?&lt;/h2&gt;
+&lt;p&gt;One solution to this problem might be to roll a die as each chocolate piece
+passes you. If the die rolls even, hold the chocolate for inspection in the
+selection bin. Otherwise, let the chocolate pass through. If the selection bin
+is full when choosing a chocolate piece, simply replace the oldest chocolate
+piece in the bin with the new one.&lt;/p&gt;
+&lt;p&gt;In this naïve approach, one is biased against keeping the earliest chocolate
+samples with the ones selected later in the day. To resolve this issue, you can
+use a loaded die or get more &#34;&lt;a href=&#34;http://en.wikipedia.org/wiki/Dungeons_%26_Dragons&#34;&gt;Dungeons &amp;amp; Dragons&lt;/a&gt;&#34;-esque by using more
+sophisticated dice and rules as the day progresses.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;
+&lt;img alt=&#34;Multifaced dice&#34; src=&#34;/static/images/multifaced-dice.jpg&#34;&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Then with some luck, you could get a uniform sampling of the days production of
+chocolate.&lt;/p&gt;
+&lt;p&gt;But there is a better way...&lt;/p&gt;
+&lt;h2&gt;A Smarter Way&lt;/h2&gt;
+&lt;p&gt;Suppose you could assign a uniform random (&lt;a href=&#34;http://http://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables&#34;&gt;i.i.d&lt;/a&gt; of course!) number from
+$[0,1)$ to each piece of chocolate you encounter on the assembly line.&lt;/p&gt;
+&lt;p&gt;Now, to obtain a sampling of the days production of chocolate, simply choose
+the chocolates corresponding to the $n$ lowest random numbers linked with them.
+Each chocolate piece has an equal chance of being in the lowest $n$ choices, so
+the sampling is uniform.&lt;/p&gt;
+&lt;p&gt;With the ubiquitous computing power available these days, you could substitute
+using dice with a &lt;a href=&#34;http://www.apple.com/iphone/apps-for-iphone/&#34;&gt;iPhone&lt;/a&gt; or &lt;a href=&#34;http://www.android.com/market/&#34;&gt;Android&lt;/a&gt; app to help out. Each time you see a new
+chocolate piece, generate a random number with your app. Hold onto the
+chocolate pieces that correspond to the $n$ lowest random numbers. If you
+encounter a new chocolate piece that is linked with a random number that is
+lower than the largest random number associated chocolate already in your
+selection bin, simply replace the old one with the new one.&lt;/p&gt;
+&lt;p&gt;By the end of the process you now have $n$ uniform samples of the entire days
+chocolate production, and you never needed to hold onto more than those $n$
+items. Pretty clever, eh!&lt;/p&gt;
+&lt;p&gt;This approach could be optimized even further. For example, you could
+preemptively generate a large list of random numbers; identify the lowest ones;
+and afterwards directly choose those chocolate pieces as they appear off the
+production line and bypass the rest.&lt;/p&gt;
+&lt;p&gt;Amazingly, you could sample the entire days production of chocolates, $N$, in
+less than $O(N)$ time. According to this &lt;a href=&#34;http://www.cs.umd.edu/~samir/498/vitter.pdf&#34;&gt;fellow&lt;/a&gt;, you can make the
+process $O(n(1+log(N/n)))$ efficient.&lt;/p&gt;
+&lt;p&gt;These techniques of sampling a set of unknown size through one pass are called
+&lt;em&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Reservoir_sampling&#34;&gt;reservoir algorithms&lt;/a&gt;&lt;/em&gt;.&lt;/p&gt;
+&lt;h2&gt;The &#34;Real&#34; World&lt;/h2&gt;
+&lt;p&gt;While most of us are not chocolate inspectors, we are all nowadays swamped in a
+&#34;sea of data&#34;, from &lt;a href=&#34;http://www.nytimes.com/2009/12/15/science/15books.html&#34;&gt;science&lt;/a&gt; and &lt;a href=&#34;http://bits.blogs.nytimes.com/2010/07/26/bringing-data-mining-into-the-mainstream/&#34;&gt;business&lt;/a&gt; to &lt;a href=&#34;http://online.wsj.com/article/NA_WSJ_PUB:SB122852285532784401.html&#34;&gt;personal tracking&lt;/a&gt;.
+Often times these raw data sets come in large chunks. One data-mining technique
+to get a better handle of the data is sampling it. Sometimes less is more. Now
+chocolate pieces become record sets and the assembly line becomes a large file.&lt;/p&gt;
+&lt;p&gt;Reservoir algorithms can be a useful tool in one’s data &lt;a href=&#34;http://radar.oreilly.com/2010/06/what-is-data-science.html&#34;&gt;science &amp;amp;
+engineering&lt;/a&gt; endeavors.&lt;/p&gt;</description>
+            <pubDate>Tue, 10 Aug 2010 12:00:00 GMT</pubDate>
+            <link>http://indraniel.github.io/a-taste-of-reservoir-algorithms/</link>
+            <guid isPermaLink="true">http://indraniel.github.io/a-taste-of-reservoir-algorithms/</guid>
+        </item>
+    </channel>
+</rss>

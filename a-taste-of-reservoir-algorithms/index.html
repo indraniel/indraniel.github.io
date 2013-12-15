@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <title>Indraniel&#39;s Notebook</title>
+
+    <!-- Loading Bootstrap -->
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/static/css/jumbotron-narrow.css" rel="stylesheet">
+    <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/css/custom.css" rel="stylesheet">
+
+    <!-- RSS Feed -->
+    <link href="/all.rss.xml" title="indraniel's notebook" type="application/atom+xml" rel="alternate">
+  </head>
+
+  <body>
+    <div class="container">
+        <div class="header">
+            <ul class="nav nav-pills pull-right">
+                <li><a href="/">Home</a></li>
+                <li><a href="/pages/about/">About</a></li>
+            </ul>
+            <h3 class="text-muted" id="blogtitle">Indraniel&#39;s Notebook</h3>
+        </div>
+        <div class="social pull-right">
+              <ul>
+                 <script language="JavaScript">
+                    u = 'indraniel';
+                    s = 'gmail.com';
+                    document.write('<a href=\"mailto:' + u + '@' + s + '\" target=\"_blank\">');
+                 </script>
+                 <li><i class="icon-envelope icon-large"></i></a></li>
+                 <li><a href="https://github.com/indraniel"><i class="icon-github-sign icon-large"></i></a></li>
+                 <li><a href="/all.rss.xml" title="indraniel's notebook" type="application/atom+xml"><i class="icon-rss icon-large"></i></a></li>
+              </ul>
+        </div>
+        
+<h1 id="title-spacer">A Taste of Reservoir Algorithms</h1>
+
+<p><i>10 August 2010</i></p>
+
+<p></p>
+<div class="post">
+<p><center>
+<img alt="A Chocolate Sampling" src="http://farm1.static.flickr.com/15/68153223_665dbdf47d_m.jpg">
+</center></p>
+<p>Imagine that you are the Chief Chocolate Inspector of a chocolate factory. Your
+job is to ensure that the days production of chocolate by the factory is of
+good quality. Only upon your recommendation will the factory be shipping out
+its days worth of chocolate production to its distribution points.</p>
+<p>The chocolate factory consists of three adjacent rooms connected together by a
+conveyor belt/assembly line.</p>
+<p>The first room is where the chocolate pieces are produced and initially placed
+onto the conveyor belt. The factory produces a variety of decadent chocolate
+types simultaneously and randomly places each type onto the conveyor belt.</p>
+<p>The second adjoining room is where each of the individual chocolate pieces get
+wrapped up. Afterwards, you are given a choice whether to choose that
+particular piece for taste inspection, or ignore it and wait for the next one.</p>
+<p>The final adjoining room is where the chocolate pieces get packaged together in
+boxes and loaded onto the delivery trucks. The trucks only move upon your
+decision at the end of the day.</p>
+<p>Your goal, as the Chief Inspector, is to notify the truck drivers if the
+packages are suitable for shipping in as efficient manner as possible. Armed
+with a special selection bin to hold $n$ pieces of chocolate, you decide to
+choose $n$ uniformly random pieces of chocolate out the $N$ total pieces of
+chocolate produced by the factory throughout the day, where $n&lt;&lt;N$. Afterwards,
+you base your taste decision on this random subset.</p>
+<p>Unfortunately, you have no idea as to how many chocolate entities will be
+passing by on any given day. Some days, the amount of chocolate produced by the
+factory is very high, on others it is pretty low. In other words, you do not
+know what $N$ is beforehand.</p>
+<p>While you could wait to make the sampling after the days production is done;
+you don’t want to hold up the assembly line making these quality control
+choices. "<a href="http://en.wikipedia.org/wiki/I_Love_Lucy">I Love Lucy</a>" has shown what kind of hijinks can happen if this
+process goes awry.</p>
+<p><span class='embed-youtube' style='text-align:center; display: block;'>
+<iframe class='youtube-player' type='text/html' width='520' height='323' src='http://www.youtube.com/embed/8NPzLBSBzPI?version=3&#038;rel=1&#038;fs=1&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' frameborder='0'></iframe></p>
+<h2>What to do?</h2>
+<p>One solution to this problem might be to roll a die as each chocolate piece
+passes you. If the die rolls even, hold the chocolate for inspection in the
+selection bin. Otherwise, let the chocolate pass through. If the selection bin
+is full when choosing a chocolate piece, simply replace the oldest chocolate
+piece in the bin with the new one.</p>
+<p>In this naïve approach, one is biased against keeping the earliest chocolate
+samples with the ones selected later in the day. To resolve this issue, you can
+use a loaded die or get more "<a href="http://en.wikipedia.org/wiki/Dungeons_%26_Dragons">Dungeons &amp; Dragons</a>"-esque by using more
+sophisticated dice and rules as the day progresses.</p>
+<p><center>
+<img alt="Multifaced dice" src="/static/images/multifaced-dice.jpg">
+</center></p>
+<p>Then with some luck, you could get a uniform sampling of the days production of
+chocolate.</p>
+<p>But there is a better way...</p>
+<h2>A Smarter Way</h2>
+<p>Suppose you could assign a uniform random (<a href="http://http://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables">i.i.d</a> of course!) number from
+$[0,1)$ to each piece of chocolate you encounter on the assembly line.</p>
+<p>Now, to obtain a sampling of the days production of chocolate, simply choose
+the chocolates corresponding to the $n$ lowest random numbers linked with them.
+Each chocolate piece has an equal chance of being in the lowest $n$ choices, so
+the sampling is uniform.</p>
+<p>With the ubiquitous computing power available these days, you could substitute
+using dice with a <a href="http://www.apple.com/iphone/apps-for-iphone/">iPhone</a> or <a href="http://www.android.com/market/">Android</a> app to help out. Each time you see a new
+chocolate piece, generate a random number with your app. Hold onto the
+chocolate pieces that correspond to the $n$ lowest random numbers. If you
+encounter a new chocolate piece that is linked with a random number that is
+lower than the largest random number associated chocolate already in your
+selection bin, simply replace the old one with the new one.</p>
+<p>By the end of the process you now have $n$ uniform samples of the entire days
+chocolate production, and you never needed to hold onto more than those $n$
+items. Pretty clever, eh!</p>
+<p>This approach could be optimized even further. For example, you could
+preemptively generate a large list of random numbers; identify the lowest ones;
+and afterwards directly choose those chocolate pieces as they appear off the
+production line and bypass the rest.</p>
+<p>Amazingly, you could sample the entire days production of chocolates, $N$, in
+less than $O(N)$ time. According to this <a href="http://www.cs.umd.edu/~samir/498/vitter.pdf">fellow</a>, you can make the
+process $O(n(1+log(N/n)))$ efficient.</p>
+<p>These techniques of sampling a set of unknown size through one pass are called
+<em><a href="http://en.wikipedia.org/wiki/Reservoir_sampling">reservoir algorithms</a></em>.</p>
+<h2>The "Real" World</h2>
+<p>While most of us are not chocolate inspectors, we are all nowadays swamped in a
+"sea of data", from <a href="http://www.nytimes.com/2009/12/15/science/15books.html">science</a> and <a href="http://bits.blogs.nytimes.com/2010/07/26/bringing-data-mining-into-the-mainstream/">business</a> to <a href="http://online.wsj.com/article/NA_WSJ_PUB:SB122852285532784401.html">personal tracking</a>.
+Often times these raw data sets come in large chunks. One data-mining technique
+to get a better handle of the data is sampling it. Sometimes less is more. Now
+chocolate pieces become record sets and the assembly line becomes a large file.</p>
+<p>Reservoir algorithms can be a useful tool in one’s data <a href="http://radar.oreilly.com/2010/06/what-is-data-science.html">science &amp;
+engineering</a> endeavors.</p>
+</div>
+
+        <div class="footer">
+          <p class="text-center">&copy; Copyright 2010-13 by indraniel</p>
+        </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/static/js/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/static/js/bootstrap.js"></script>
+
+    <!-- Font Setup -->
+    <script type="text/javascript" src="//use.typekit.net/ahz1kiy.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+    
+    
+    <!-- Mathematics Typesetting -->
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js" type= "text/javascript">
+           MathJax.Hub.Config({
+           HTML: ["input/TeX","output/HTML-CSS"],
+           TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], equationNumbers: { autoNumber: "AMS" } },
+           extensions: ["tex2jax.js"],
+           jax: ["input/TeX","output/HTML-CSS"],
+           tex2jax: {
+               inlineMath: [ ['$','$'] ],
+               displayMath: [ ['$$','$$'] ],
+               processEscapes: true },
+           "HTML-CSS": {
+               styles: { ".MathJax .mo, .MathJax .mi": {color: "black ! important"}}
+           }
+       });
+    </script>
+    
+
+
+  </body>
+</html>
