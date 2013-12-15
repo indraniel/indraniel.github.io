@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 <h1 id="title-spacer">{{ page.meta.title }}</h1>
+{% if page.meta.date %}
 <p><i>{{ page.meta.date.strftime('%d %B %Y') }}</i></p>
+{% endif %}
 <p></p>
 <div class="post">
 {{ page }}
