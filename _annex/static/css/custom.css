@@ -1,12 +1,12 @@
 /* font changes */
 body {
-    font-family: 'calluna-sans-1', 'calluna-sans-2', 'helvetica';
+    font-family: 'Alegreya Sans', 'helvetica';
     color: #313131;
     font-size: 18px;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: 'calluna-sans-1', 'calluna-sans-2', 'helvetica';
+    font-family: 'Alegreya Sans', 'helvetica';
 }
 
 /* blog title */

@@ -15,6 +15,7 @@
     <link href="{{ url_for('static', filename='css/jumbotron-narrow.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans:400,500,400italic,500italic' rel='stylesheet' type='text/css'>
 
     <!-- RSS Feed -->
     <link href="{{ url_for('rss_feed') }}" title="indraniel's notebook" type="application/atom+xml" rel="alternate">
@@ -52,10 +53,6 @@
     <script src="{{ url_for('static', filename="js/jquery.js")   }}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{{ url_for('static', filename="js/bootstrap.js") }}"></script>
-
-    <!-- Font Setup -->
-    <script type="text/javascript" src="http://use.typekit.net/ahz1kiy.js"></script>
-    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
     {% block mathjax %}
     {% endblock mathjax %}
