@@ -7,4 +7,7 @@ posts: $(POSTS)
 
 clean:
 	find . -path ./venv -prune -o -name "*.pyc" -print -exec rm -rf {} \;
+
+cleanall:
+	find . -path ./venv -prune -o -name "*.pyc" -print -exec rm -rf {} \;
 	rm -rf $(POST_DIRS) pages static index.html all.rss.xml
