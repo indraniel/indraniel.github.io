@@ -1,28 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link href='http://fonts.googleapis.com/css?family=Noticia+Text:400,700' rel='stylesheet' type='text/css' />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
     
-    <title>{{ config['BLOG_TITLE'] }}</title>
+    <title>{% block title %}{{ config['BLOG_TITLE'] }}{% endblock title %}</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
+    <!-- Loading Bootstrap -->
+    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
 
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/jumbotron-narrow.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
   </head>
+
   <body>
-    <div class=container>
-                    
-      <div class=navigation>
-        <ul>
-                      <li><a href="{{ url_for('home')  }}">Blog</a> </li>
-                      <li><a href="{{ url_for('about') }}">About</a> </li>
-                  </ul>
-      </div>
-      <div class=separator></div>                
-        <div class=body>
-            {% block content %}{% endblock content %}
+    <div class="container">
+        <div class="header">
+            <ul class="nav nav-pills pull-right">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+            </ul>
+            <h3 class="text-muted" id="blogtitle">{{ config['BLOG_TITLE'] }}</h3>
         </div>
-      </div>
+        {% block content %}
+        {% endblock content %}
+        <div class="footer">
+          <p class="text-center">&copy; Copyright 2010-13 by indraniel</p>
+          <div class="row social">
+            <div class="col-xs-4 col-md-3"></div>
+            <div class="col-xs-5 col-md-4 col-md-offset-2">
+              <ul>
+                 <script language="JavaScript">
+                    u = 'indraniel';
+                    s = 'gmail.com';
+                    document.write('<a href=\"mailto:' + u + '@' + s + '\" target=\"_blank\">');
+                 </script>
+                 <li><i class="icon-envelope icon-large"></i></a></li>
+                 <li><a href="https://github.com/indraniel"><i class="icon-github-sign icon-large"></i></a></li>
+                 <li><i class="icon-rss icon-large"></i></li>
+              </ul>
+            </div>
+            <div class="col-xs-3"></div>
+          </div>
+        </div>
     </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{{ url_for('static', filename="js/jquery.js")   }}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ url_for('static', filename="js/bootstrap.js") }}"></script>
+
+    <!-- Font Setup -->
+    <script type="text/javascript" src="//use.typekit.net/ahz1kiy.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+    <!-- Mathematics Typesetting -->
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js" type= "text/javascript">
+           MathJax.Hub.Config({
+           HTML: ["input/TeX","output/HTML-CSS"],
+           TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], equationNumbers: { autoNumber: "AMS" } },
+           extensions: ["tex2jax.js"],
+           jax: ["input/TeX","output/HTML-CSS"],
+           tex2jax: { 
+               inlineMath: [ ['$','$'] ],
+               displayMath: [ ['$$','$$'] ],
+               processEscapes: true },
+           "HTML-CSS": {
+               styles: { ".MathJax .mo, .MathJax .mi": {color: "black ! important"}}
+           }
+       });
+    </script>
+
   </body>
 </html>

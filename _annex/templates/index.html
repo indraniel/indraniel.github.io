@@ -1,10 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Posts</h2>
 
-<ul class="page-list">
-{% for page in pages %}
-    <li><a href="{{ url_for('page', path=page.path) }}">{{page.meta.title}}</a></li>
-{% endfor %}
-</ul>
+<div class="index-table post-index">
+  <table class="table">
+      <tbody>
+          {% for page in pages %}
+          <tr>
+              <td align="left"><h4><a href="{{ url_for('page', path=page.path) }}">{{page.meta.title}}</a></h4></td>
+              <td class="info" align="right">{{ page.meta.date.strftime('%d %B %Y') }}</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+</div>
 {% endblock %}

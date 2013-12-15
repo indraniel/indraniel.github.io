@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>{{ page.meta.title }}</h1>
-<p>{{ page.meta.date }}</p>
+<p class="text-center"><h1>{{ page.meta.title }}</h1></p>
+<p><i>{{ page.meta.date.strftime('%d %B %Y') }}</i></p>
+<p></p>
 {{ page }}
 {% endblock %}
