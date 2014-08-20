@@ -24,9 +24,9 @@ def about():
     page = pages.get_or_404('pages/about')
     return render_template('page.html', page=page)
 
-@app.route('/pygments.css')
-def pygments_css():
-    return pygments_style_defs('pastie'), 200, {'Content-Type': 'text/css'}
+#@app.route('/pygments.css')
+#def pygments_css():
+#    return pygments_style_defs('pastie'), 200, {'Content-Type': 'text/css'}
 
 @app.route('/all.rss.xml')
 def rss_feed():
