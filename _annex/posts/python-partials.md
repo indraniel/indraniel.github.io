@@ -63,8 +63,8 @@ Partials
 --------
 
 The `f(args)` operator is used to make a function call on function `f`.
-Each argument to a function is an expression.  Before the function get
-executed, all of the argument expressions are evaluated from left to
+Each argument to a function is an expression.  Before the function gets
+executed, all of its argument expressions are evaluated from left to
 right.  This is known as _application order evaluation_.
 
 It is possible to partially evaluate function arguments using the
