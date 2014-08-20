@@ -1,4 +1,5 @@
 from flask import render_template, url_for, Response
+from flask_flatpages import pygments_style_defs
 from app import app, pages
 
 def sorted_posts():
@@ -22,6 +23,10 @@ def page(path):
 def about():
     page = pages.get_or_404('pages/about')
     return render_template('page.html', page=page)
+
+@app.route('/pygments.css')
+def pygments_css():
+    return pygments_style_defs('pastie'), 200, {'Content-Type': 'text/css'}
 
 @app.route('/all.rss.xml')
 def rss_feed():
