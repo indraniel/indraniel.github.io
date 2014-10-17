@@ -8,7 +8,7 @@ done and I recently decided to catch up on the [programming subreddit][1] news
 en masse.
 
 One of the interesting posts I came across was ["The Great White Space
-Debate"][2]. It was an eloquent post on a dry programming topic; however, the
+Debate"][2]. It's an eloquent post on a dry programming topic; however, the
 python script the author posted in the article piqued my attention. The script
 locates the Java source files within a root project directory and then
 identifies, counts, and summarizes the various for loop styles used within
@@ -55,9 +55,9 @@ Here is the script taken from the blog post:
                 counts['spaced'] += 1
         print(counts)
 
-I was interested in how this script was written.  The script is liberally
-using two aspects of python's functional features: _generators_ and
-_[partials][4]_.
+Being a python neophyte, I was interested in how this script was written.  The
+script is liberally using two aspects of python's functional features:
+_generators_ and _[partials][4]_.
 
 Partials
 --------
