@@ -95,7 +95,7 @@ them.  &lt;/p&gt;
 
 &lt;p&gt;Being a python neophyte, I was interested in how this script was written.  The
 script is liberally using two aspects of python&#39;s functional features:
-&lt;em&gt;&lt;a href=&#34;https://docs.python.org/2/howto/functional.html#generators&#34;&gt;generators&lt;/a&gt;&lt;/em&gt; and &lt;em&gt;&lt;a href=&#34;https://docs.python.org/2/library/functools.html#functools.partial&#34;&gt;partials&lt;/a&gt;&lt;/em&gt;.&lt;/p&gt;
+ &lt;em&gt;&lt;a href=&#34;https://docs.python.org/2/library/functools.html#functools.partial&#34;&gt;partials&lt;/a&gt;&lt;/em&gt; and &lt;em&gt;&lt;a href=&#34;https://docs.python.org/2/howto/functional.html#generators&#34;&gt;generators&lt;/a&gt;&lt;/em&gt;.&lt;/p&gt;
 &lt;h2&gt;Partials&lt;/h2&gt;
 &lt;h3&gt;Theory&lt;/h3&gt;
 &lt;p&gt;The &lt;code&gt;f(args)&lt;/code&gt; operator is used to make a function call on function &lt;code&gt;f&lt;/code&gt;.
@@ -144,7 +144,6 @@ give values of &lt;code&gt;y&lt;/code&gt; to produce a result.  &lt;/p&gt;
 &lt;p&gt;The author is using the partials as a way to &#34;label&#34; his regular expression through descriptive and readable function variable names.  An interesting approach!&lt;/p&gt;
 &lt;h2&gt;Generators&lt;/h2&gt;
 &lt;h3&gt;Theory&lt;/h3&gt;
-&lt;p&gt;Generators are a powerful way to write pythonic programs that are based on processing data streams of unknown size and limit.&lt;/p&gt;
 &lt;p&gt;Whenever a function uses the &lt;code&gt;yield&lt;/code&gt; keyword, it defines a &lt;em&gt;generator&lt;/em&gt; object.  A generator is a function that produces a sequence of values for use in iteration.  For example,&lt;/p&gt;
 &lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;countdown&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;
     &lt;span class=&#34;n&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;quot;Counting down from {}&amp;quot;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;format&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
@@ -161,7 +160,7 @@ give values of &lt;code&gt;y&lt;/code&gt; to produce a result.  &lt;/p&gt;
 
 
 &lt;p&gt;you&#39;ll notice that none of the code gets executed.  Instead &lt;code&gt;countdown&lt;/code&gt; returns a generator object which is assigned to variable &lt;code&gt;c&lt;/code&gt;.  The generator object will begin to execute the function only when the &lt;code&gt;next()&lt;/code&gt; method is applied to it like so:&lt;/p&gt;
-&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;next&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;  &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;it&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;__next__&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Python&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;3.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;
+&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;next&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;  &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;quot;it&amp;#39;s c.__next__ in Python 3.x&amp;quot;&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;Counting&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;down&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;
 &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -198,8 +197,10 @@ give values of &lt;code&gt;y&lt;/code&gt; to produce a result.  &lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;A much more through description of python is described &lt;a href=&#34;https://www.jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;h3&gt;Practice&lt;/h3&gt;</description>
+&lt;p&gt;A much more through description of python&#39;s generator feature is described &lt;a href=&#34;https://www.jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Practice&lt;/h3&gt;
+&lt;p&gt;Generators are a powerful way to write pythonic programs that are based on processing data streams of unknown size and limit.&lt;/p&gt;
+&lt;p&gt;In the Java code parsing example, the &lt;code&gt;yield&lt;/code&gt; statement is called in all three of the functions defined in the script.  This approach is useful because we have an unknown data stream --  for any given Java project one doesn&#39;t know how many Java source files there are, and how many lines are in each source file.  Rather than loading everything up initially, we can lazily load up the source files and its line contents as needed.&lt;/p&gt;</description>
             <pubDate>Tue, 19 Aug 2014 12:00:00 GMT</pubDate>
             <link>http://indraniel.github.io/python-partials-and-generators/</link>
             <guid isPermaLink="true">http://indraniel.github.io/python-partials-and-generators/</guid>

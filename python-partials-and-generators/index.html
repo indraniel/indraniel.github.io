@@ -143,7 +143,7 @@ them.  </p>
 
 <p>Being a python neophyte, I was interested in how this script was written.  The
 script is liberally using two aspects of python's functional features:
-<em><a href="https://docs.python.org/2/howto/functional.html#generators">generators</a></em> and <em><a href="https://docs.python.org/2/library/functools.html#functools.partial">partials</a></em>.</p>
+ <em><a href="https://docs.python.org/2/library/functools.html#functools.partial">partials</a></em> and <em><a href="https://docs.python.org/2/howto/functional.html#generators">generators</a></em>.</p>
 <h2>Partials</h2>
 <h3>Theory</h3>
 <p>The <code>f(args)</code> operator is used to make a function call on function <code>f</code>.
@@ -192,7 +192,6 @@ give values of <code>y</code> to produce a result.  </p>
 <p>The author is using the partials as a way to "label" his regular expression through descriptive and readable function variable names.  An interesting approach!</p>
 <h2>Generators</h2>
 <h3>Theory</h3>
-<p>Generators are a powerful way to write pythonic programs that are based on processing data streams of unknown size and limit.</p>
 <p>Whenever a function uses the <code>yield</code> keyword, it defines a <em>generator</em> object.  A generator is a function that produces a sequence of values for use in iteration.  For example,</p>
 <div class="codehilite"><pre><span class="n">def</span> <span class="n">countdown</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">:</span>
     <span class="n">print</span><span class="p">(</span><span class="s">&quot;Counting down from {}&quot;</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
@@ -209,7 +208,7 @@ give values of <code>y</code> to produce a result.  </p>
 
 
 <p>you'll notice that none of the code gets executed.  Instead <code>countdown</code> returns a generator object which is assigned to variable <code>c</code>.  The generator object will begin to execute the function only when the <code>next()</code> method is applied to it like so:</p>
-<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="p">.</span><span class="n">next</span><span class="p">()</span>  <span class="err">#</span> <span class="n">it</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">c</span><span class="p">.</span><span class="n">__next__</span> <span class="n">in</span> <span class="n">Python</span> <span class="mf">3.</span><span class="n">x</span>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="p">.</span><span class="n">next</span><span class="p">()</span>  <span class="err">#</span> <span class="s">&quot;it&#39;s c.__next__ in Python 3.x&quot;</span>
 <span class="n">Counting</span> <span class="n">down</span> <span class="n">from</span> <span class="mi">5</span>
 <span class="mi">5</span>
 </pre></div>
@@ -246,8 +245,10 @@ give values of <code>y</code> to produce a result.  </p>
 </pre></div>
 
 
-<p>A much more through description of python is described <a href="https://www.jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/">here</a>.</p>
+<p>A much more through description of python's generator feature is described <a href="https://www.jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/">here</a>.</p>
 <h3>Practice</h3>
+<p>Generators are a powerful way to write pythonic programs that are based on processing data streams of unknown size and limit.</p>
+<p>In the Java code parsing example, the <code>yield</code> statement is called in all three of the functions defined in the script.  This approach is useful because we have an unknown data stream --  for any given Java project one doesn't know how many Java source files there are, and how many lines are in each source file.  Rather than loading everything up initially, we can lazily load up the source files and its line contents as needed.</p>
 </div>
 
         <div class="footer">
