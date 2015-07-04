@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <title>Indraniel&#39;s Notebook</title>
+
+    <!-- Loading Bootstrap -->
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/static/css/jumbotron-narrow.css" rel="stylesheet">
+    <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    
+    
+    <link href="/static/css/pygments.css" rel="stylesheet">
+    
+
+    <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans:400,500,400italic,500italic' rel='stylesheet' type='text/css'>
+    <link href="/static/css/custom.css" rel="stylesheet">
+
+    <!-- RSS Feed -->
+    <link href="/all.rss.xml" title="indraniel's notebook" type="application/atom+xml" rel="alternate">
+  </head>
+
+  <body>
+    <div class="container">
+        <div class="header">
+            <ul class="nav nav-pills pull-right">
+                <li><a href="/">Home</a></li>
+                <li><a href="/pages/about/">About</a></li>
+            </ul>
+            <h3 class="text-muted" id="blogtitle">Indraniel&#39;s Notebook</h3>
+        </div>
+        <div class="social pull-right">
+              <ul>
+                 <script language="JavaScript">
+                    u = 'indraniel';
+                    s = 'gmail.com';
+                    document.write('<a href=\"mailto:' + u + '@' + s + '\" target=\"_blank\">');
+                 </script>
+                 <li><i class="icon-envelope icon-large"></i></a></li>
+                 <li><a href="https://github.com/indraniel"><i class="icon-github-sign icon-large"></i></a></li>
+                 <li><a href="/all.rss.xml" title="indraniel's notebook" type="application/atom+xml"><i class="icon-rss icon-large"></i></a></li>
+              </ul>
+        </div>
+        
+<h1 id="title-spacer">Python&#39;s Functional Features - Partials &amp;amp; Generators</h1>
+
+<p><i>19 August 2014</i></p>
+
+<p></p>
+<div class="post">
+<p>I've been abstaining myself from reddit for a while to get some other things
+done and I recently decided to catch up on the <a href="http://www.reddit.com/r/programming">programming subreddit</a> news
+en masse.</p>
+<p>One of the interesting posts I came across was <a href="https://medium.com/@thechriskiehl/the-great-white-space-debate-3633cba8b5c1">"The Great White Space
+Debate"</a>. It's an eloquent post on a dry programming topic; however, the
+python script the author posted in the article piqued my attention. The script
+locates the Java source files within a root project directory and then
+identifies, counts, and summarizes the various for loop styles used within
+them.  </p>
+<p>Here is the script taken from the blog post:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</pre></div></td><td class="code"><div class="codehilite"><pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+
+<span class="k">def</span> <span class="nf">get_java_src_files</span><span class="p">(</span><span class="n">java_root</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">java_root</span><span class="p">):</span>
+        <span class="k">yield from</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span>
+                    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">&#39;.java&#39;</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">read_files</span><span class="p">(</span><span class="n">filenames</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">yield from</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">extract_forloops</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+    <span class="k">yield from</span> <span class="p">(</span>
+        <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span>
+        <span class="k">if</span> <span class="s">&#39;for (&#39;</span> <span class="ow">in</span> <span class="n">line</span>
+        <span class="c"># One of those god forsaken &#39;enhanced&#39; for loops. Ignore</span>
+        <span class="ow">and</span> <span class="s">&#39;:&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">line</span>
+    <span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">spaced_apart</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">,</span> <span class="s">&#39;[a-zA-Z]\s\=&#39;</span><span class="p">)</span>
+    <span class="n">grouped_together</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">,</span> <span class="s">&#39;[a-zA-Z]\=&#39;</span><span class="p">)</span>
+
+    <span class="n">java_src_path</span> <span class="o">=</span> <span class="s">r&#39;C:\Program Files\Java\jdk1.8.0_20\src&#39;</span>
+
+    <span class="n">forloops</span> <span class="o">=</span> <span class="n">extract_forloops</span><span class="p">(</span><span class="n">read_files</span><span class="p">(</span><span class="n">get_java_src_files</span><span class="p">(</span><span class="n">java_src_path</span><span class="p">)))</span>
+
+    <span class="n">counts</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;spaced&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;nonspaced&#39;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">loop</span> <span class="ow">in</span> <span class="n">forloops</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">grouped_together</span><span class="p">(</span><span class="n">loop</span><span class="p">):</span>
+            <span class="n">counts</span><span class="p">[</span><span class="s">&#39;nonspaced&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">spaced_apart</span><span class="p">(</span><span class="n">loop</span><span class="p">):</span>
+            <span class="n">counts</span><span class="p">[</span><span class="s">&#39;spaced&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Being a python neophyte, I was interested in how this script was written.  The
+script is liberally using two aspects of python's functional features:
+<em><a href="https://docs.python.org/2/howto/functional.html#generators">generators</a></em> and <em><a href="https://docs.python.org/2/library/functools.html#functools.partial">partials</a></em>.</p>
+<h2>Partials</h2>
+<h3>Theory</h3>
+<p>The <code>f(args)</code> operator is used to make a function call on function <code>f</code>.
+Each argument to a function is an expression.  Before the function gets
+executed, all of its argument expressions are evaluated from left to
+right.  This is known as <em>application order evaluation</em>.</p>
+<p>It is possible to partially evaluate function arguments using the
+<code>partial()</code> function from the <code>functools</code> module.  For example:</p>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span>
+
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="n">fn</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c"># supply values to foo&#39;s x and y arguments </span>
+<span class="n">fn</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>                    <span class="c"># calls foo(1,2,3), result is 6</span>
+</pre></div>
+
+
+<p>The <code>partial()</code> function preemptively evaluates some of the arguments to
+a function, and returns an object that you can call to supply the
+remaining arguments at a later point. </p>
+<p>In the above example, the variable <code>fn</code> represents a partially evaluated
+function where the first two arguments, <code>x</code> and <code>y</code> are already supplied and
+evaluated.  The third argument, <code>z</code>, is given later on the next line. The
+function is then complete and executed, yielding a result of 6.</p>
+<p>Partial evaluation of function arguments is closely related to
+<em><a href="http://en.wikipedia.org/wiki/Currying">currying</a></em>, a functional programming technique where a function
+taking multiple arguments is decomposed into a series of functions each
+taking only one argument. For example, given a function <code>f(x,y)</code>, you
+partially evaluate <code>f</code> by fixing <code>x</code> to get a new function to which you
+give values of <code>y</code> to produce a result.  </p>
+<h3>Practice</h3>
+<p>In the Java for loop identifying code the author creates partially evaluated functions on lines 24-25:</p>
+<div class="codehilite"><pre><span class="n">spaced_apart</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">,</span> <span class="s">&#39;[a-zA-Z]\s\=&#39;</span><span class="p">)</span>
+<span class="n">grouped_together</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">,</span> <span class="s">&#39;[a-zA-Z]\=&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>and invokes them on the <code>if</code> statements on lines 33 and 35:</p>
+<div class="codehilite"><pre><span class="k">if</span> <span class="n">grouped_together</span><span class="p">(</span><span class="n">loop</span><span class="p">):</span>
+    <span class="n">counts</span><span class="p">[</span><span class="s">&#39;nonspaced&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">elif</span> <span class="n">spaced_apart</span><span class="p">(</span><span class="n">loop</span><span class="p">):</span>
+    <span class="n">counts</span><span class="p">[</span><span class="s">&#39;spaced&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+
+
+<p>The author is using the partials as a way to "label" his regular expression through descriptive and readable function variable names.  An interesting approach!</p>
+<h2>Generators</h2>
+<h3>Theory</h3>
+<p>Generators are a powerful way to write pythonic programs that are based on processing data streams of unknown size and limit.</p>
+<p>Whenever a function uses the <code>yield</code> keyword, it defines a <em>generator</em> object.  A generator is a function that produces a sequence of values for use in iteration.  For example,</p>
+<div class="codehilite"><pre><span class="n">def</span> <span class="n">countdown</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;Counting down from {}&quot;</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">:</span>
+        <span class="n">yield</span> <span class="n">n</span>
+        <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">return</span>
+</pre></div>
+
+
+<p>If you define the above function in a REPL and execute it, like so:</p>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">countdown</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+
+<p>you'll notice that none of the code gets executed.  Instead <code>countdown</code> returns a generator object, which is assigned to variable <code>c</code>.  The generator object will begin to execute the function only when the <code>next()</code> method is applied to it like so:</p>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="p">.</span><span class="n">next</span><span class="p">()</span>  <span class="err">#</span> <span class="n">it</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">c</span><span class="p">.</span><span class="n">__next__</span> <span class="n">in</span> <span class="n">Python</span> <span class="mf">3.</span><span class="n">x</span>
+<span class="n">Counting</span> <span class="n">down</span> <span class="n">from</span> <span class="mi">5</span>
+<span class="mi">5</span>
+</pre></div>
+
+
+<p>On the first call to <code>next()</code>, the generator function executes statements until it reaches a <code>yield</code> statement.  The yield statement produces a result at which point execution of the function stops until <code>next()</code> is invoked again.  Subsequent <code>next()</code> calls resumes executing the function starting with the statement following <code>yield</code>. Like so:</p>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="p">.</span><span class="n">next</span><span class="p">()</span>
+<span class="mi">4</span>
+</pre></div>
+
+
+<p>In python, you don't normally call <code>next()</code> directly; rather, it's called indirectly via a <code>for</code>, or some other operation that works on a sequence.</p>
+<p>A generator function signals its completion by returning or raising a <code>StopIteration</code> exception.  Afterwards, continued <code>next()</code> calls should always return <code>None</code>.</p>
+<h4>Warning</h4>
+<p>A subtle problem with generators happens when a generator is partially consumed.  An example scenario is:</p>
+<div class="codehilite"><pre><span class="k">for</span> <span class="n">n</span> <span class="n">in</span> <span class="n">countdown</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="o">:</span> <span class="k">break</span>
+    <span class="err">#</span> <span class="n">otherwise</span><span class="p">,</span> <span class="k">do</span> <span class="n">more</span> <span class="n">stuff</span><span class="p">...</span>
+</pre></div>
+
+
+<p>Here, the <code>for</code> loop aborts when "n" becomes equal to 2, however, the associated generator never fully completes.  When a generator is no longer used, or gets deleted once out of scope, a generator method named <code>close()</code> is invoked.  Normally it's not necessary to call <code>close()</code> directly, but you can call it manually like so:</p>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="nx">countdown</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">c.next</span><span class="p">()</span>
+<span class="nx">Counting</span> <span class="nb">down</span> <span class="nb">from</span> <span class="mi">5</span>
+<span class="mi">5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">c.next</span><span class="p">()</span>
+<span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">c.close</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">c.next</span><span class="p">()</span>
+<span class="nx">Traceback</span> <span class="p">(</span><span class="nx">most</span> <span class="nx">recent</span> <span class="nb">call</span> <span class="nb">last</span><span class="p">):</span>
+<span class="nb">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">1</span><span class="p">,</span> <span class="k">in</span> <span class="o">&lt;</span><span class="nx">module</span><span class="o">&gt;</span>
+<span class="nx">StopIteration</span>
+</pre></div>
+
+
+<p>A much more through description of python is described <a href="https://www.jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/">here</a>.</p>
+<h3>Practice</h3>
+</div>
+
+        <div class="footer">
+          <p class="text-center">&copy; Copyright 2010-15 by indraniel</p>
+        </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/static/js/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/static/js/bootstrap.js"></script>
+
+    
+    
+    <!-- Mathematics Typesetting -->
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js" type= "text/javascript">
+           MathJax.Hub.Config({
+           HTML: ["input/TeX","output/HTML-CSS"],
+           TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], equationNumbers: { autoNumber: "AMS" } },
+           extensions: ["tex2jax.js"],
+           jax: ["input/TeX","output/HTML-CSS"],
+           tex2jax: {
+               inlineMath: [ ['$','$'] ],
+               displayMath: [ ['$$','$$'] ],
+               processEscapes: true },
+           "HTML-CSS": {
+               styles: { ".MathJax .mo, .MathJax .mi": {color: "black ! important"}}
+           }
+       });
+    </script>
+    
+
+
+  </body>
+</html>
