@@ -15,7 +15,7 @@ To see how all the blog posts render, try:
 Licensing
 ---------
 
-All content and code copyright 2010-13 Indraniel Das. Prose licensed under a
+All content and code copyright 2010-15 Indraniel Das. Prose licensed under a
 [Creative Commons Attribution 3.0 Unported License][cc]. Code, except where
 otherwise noted, licensed under the [MIT License][mit].
 
