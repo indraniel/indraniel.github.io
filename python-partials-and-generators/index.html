@@ -99,42 +99,42 @@ them.  </p>
 34
 35
 36
-37</pre></div></td><td class="code"><div class="codehilite"><pre><span class="kn">import</span> <span class="nn">os</span>
+37</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
 
 <span class="k">def</span> <span class="nf">get_java_src_files</span><span class="p">(</span><span class="n">java_root</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">java_root</span><span class="p">):</span>
         <span class="k">yield from</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span>
-                    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">&#39;.java&#39;</span><span class="p">))</span>
+                    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.java&#39;</span><span class="p">))</span>
 
 <span class="k">def</span> <span class="nf">read_files</span><span class="p">(</span><span class="n">filenames</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="k">yield from</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 
 <span class="k">def</span> <span class="nf">extract_forloops</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
     <span class="k">yield from</span> <span class="p">(</span>
         <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span>
-        <span class="k">if</span> <span class="s">&#39;for (&#39;</span> <span class="ow">in</span> <span class="n">line</span>
-        <span class="c"># One of those god forsaken &#39;enhanced&#39; for loops. Ignore</span>
-        <span class="ow">and</span> <span class="s">&#39;:&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">line</span>
+        <span class="k">if</span> <span class="s1">&#39;for (&#39;</span> <span class="ow">in</span> <span class="n">line</span>
+        <span class="c1"># One of those god forsaken &#39;enhanced&#39; for loops. Ignore</span>
+        <span class="ow">and</span> <span class="s1">&#39;:&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">line</span>
     <span class="p">)</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">spaced_apart</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">,</span> <span class="s">&#39;[a-zA-Z]\s\=&#39;</span><span class="p">)</span>
-    <span class="n">grouped_together</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">,</span> <span class="s">&#39;[a-zA-Z]\=&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">spaced_apart</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">,</span> <span class="s1">&#39;[a-zA-Z]\s\=&#39;</span><span class="p">)</span>
+    <span class="n">grouped_together</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">,</span> <span class="s1">&#39;[a-zA-Z]\=&#39;</span><span class="p">)</span>
 
-    <span class="n">java_src_path</span> <span class="o">=</span> <span class="s">r&#39;C:\Program Files\Java\jdk1.8.0_20\src&#39;</span>
+    <span class="n">java_src_path</span> <span class="o">=</span> <span class="s1">r&#39;C:\Program Files\Java\jdk1.8.0_20\src&#39;</span>
 
     <span class="n">forloops</span> <span class="o">=</span> <span class="n">extract_forloops</span><span class="p">(</span><span class="n">read_files</span><span class="p">(</span><span class="n">get_java_src_files</span><span class="p">(</span><span class="n">java_src_path</span><span class="p">)))</span>
 
-    <span class="n">counts</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;spaced&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;nonspaced&#39;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;spaced&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;nonspaced&#39;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">loop</span> <span class="ow">in</span> <span class="n">forloops</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">grouped_together</span><span class="p">(</span><span class="n">loop</span><span class="p">):</span>
-            <span class="n">counts</span><span class="p">[</span><span class="s">&#39;nonspaced&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">counts</span><span class="p">[</span><span class="s1">&#39;nonspaced&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">elif</span> <span class="n">spaced_apart</span><span class="p">(</span><span class="n">loop</span><span class="p">):</span>
-            <span class="n">counts</span><span class="p">[</span><span class="s">&#39;spaced&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">counts</span><span class="p">[</span><span class="s1">&#39;spaced&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
@@ -150,12 +150,12 @@ executed, all of its argument expressions are evaluated from left to
 right.  This is known as <em>application order evaluation</em>.</p>
 <p>It is possible to partially evaluate function arguments using the
 <code>partial()</code> function from the <code>functools</code> module.  For example:</p>
-<div class="codehilite"><pre><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span>
 
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
-<span class="n">fn</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c"># supply values to foo&#39;s x and y arguments </span>
-<span class="n">fn</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>                    <span class="c"># calls foo(1,2,3), result is 6</span>
+<span class="n">fn</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># supply values to foo&#39;s x and y arguments </span>
+<span class="n">fn</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>                    <span class="c1"># calls foo(1,2,3), result is 6</span>
 </pre></div>
 
 
@@ -174,16 +174,16 @@ partially evaluate <code>f</code> by fixing <code>x</code> to get a new function
 give values of <code>y</code> to produce a result.  </p>
 <h3>Practice</h3>
 <p>In the Java for loop identifying code the author creates partially evaluated functions on lines 24-25:</p>
-<div class="codehilite"><pre><span class="n">spaced_apart</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">,</span> <span class="s">&#39;[a-zA-Z]\s\=&#39;</span><span class="p">)</span>
-<span class="n">grouped_together</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">,</span> <span class="s">&#39;[a-zA-Z]\=&#39;</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">spaced_apart</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">,</span> <span class="s1">&#39;[a-zA-Z]\s\=&#39;</span><span class="p">)</span>
+<span class="n">grouped_together</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">,</span> <span class="s1">&#39;[a-zA-Z]\=&#39;</span><span class="p">)</span>
 </pre></div>
 
 
 <p>and invokes them on the <code>if</code> statements on lines 33 and 35:</p>
-<div class="codehilite"><pre><span class="k">if</span> <span class="n">grouped_together</span><span class="p">(</span><span class="n">loop</span><span class="p">):</span>
-    <span class="n">counts</span><span class="p">[</span><span class="s">&#39;nonspaced&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<div class="codehilite"><pre><span></span><span class="k">if</span> <span class="n">grouped_together</span><span class="p">(</span><span class="n">loop</span><span class="p">):</span>
+    <span class="n">counts</span><span class="p">[</span><span class="s1">&#39;nonspaced&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="k">elif</span> <span class="n">spaced_apart</span><span class="p">(</span><span class="n">loop</span><span class="p">):</span>
-    <span class="n">counts</span><span class="p">[</span><span class="s">&#39;spaced&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">counts</span><span class="p">[</span><span class="s1">&#39;spaced&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
 
 
@@ -191,30 +191,30 @@ give values of <code>y</code> to produce a result.  </p>
 <h2>Generators</h2>
 <h3>Theory</h3>
 <p>Whenever a function uses the <code>yield</code> keyword, it defines a <em>generator</em> object.  A generator is a function that produces a sequence of values for use in iteration.  For example,</p>
-<div class="codehilite"><pre><span class="n">def</span> <span class="n">countdown</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">:</span>
-    <span class="n">print</span><span class="p">(</span><span class="s">&quot;Counting down from {}&quot;</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
-    <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">:</span>
-        <span class="n">yield</span> <span class="n">n</span>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Counting down from {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">n</span>
         <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
     <span class="k">return</span>
 </pre></div>
 
 
 <p>If you define the above function in a REPL and execute it, like so:</p>
-<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">countdown</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span>&gt;&gt;&gt; c = countdown(5)
 </pre></div>
 
 
 <p>you'll notice that none of the code gets executed.  Instead <code>countdown</code> returns a generator object which is assigned to variable <code>c</code>.  The generator object will begin to execute the function only when the <code>next()</code> method is applied to it like so:</p>
-<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="p">.</span><span class="n">next</span><span class="p">()</span>  <span class="err">#</span> <span class="s">&quot;it&#39;s c.__next__ in Python 3.x&quot;</span>
-<span class="n">Counting</span> <span class="n">down</span> <span class="n">from</span> <span class="mi">5</span>
-<span class="mi">5</span>
+<div class="codehilite"><pre><span></span>&gt;&gt;&gt; c.next()  # &quot;it&#39;s c.__next__ in Python 3.x&quot;
+Counting down from 5
+5
 </pre></div>
 
 
 <p>On the first call to <code>next()</code>, the generator function executes statements until it reaches a <code>yield</code> statement.  The <code>yield</code> statement produces a result at which point execution of the function stops until <code>next()</code> is invoked again.  Subsequent <code>next()</code> calls resumes executing the function starting with the statement following <code>yield</code>. Continuing with our running example, a second call to <code>next()</code> will behave like:</p>
-<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="p">.</span><span class="n">next</span><span class="p">()</span>
-<span class="mi">4</span>
+<div class="codehilite"><pre><span></span>&gt;&gt;&gt; c.next()
+4
 </pre></div>
 
 
@@ -222,24 +222,24 @@ give values of <code>y</code> to produce a result.  </p>
 <p>A generator function signals its completion by returning or raising a <code>StopIteration</code> exception.  Afterwards, continued <code>next()</code> calls should always return <code>None</code>.</p>
 <h4>Warning</h4>
 <p>A subtle problem with generators happens when a generator is partially consumed.  An example scenario is:</p>
-<div class="codehilite"><pre><span class="k">for</span> <span class="n">n</span> <span class="n">in</span> <span class="n">countdown</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">:</span>
-    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="o">:</span> <span class="k">break</span>
-    <span class="err">#</span> <span class="n">otherwise</span><span class="p">,</span> <span class="k">do</span> <span class="n">more</span> <span class="n">stuff</span><span class="p">...</span>
+<div class="codehilite"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">countdown</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span> <span class="k">break</span>
+    <span class="c1"># otherwise, do more stuff...</span>
 </pre></div>
 
 
 <p>Here, the <code>for</code> loop aborts when "n" becomes equal to 2, however, the associated generator never fully completes.  When a generator is no longer used, or gets deleted once out of scope, a generator method named <code>close()</code> is invoked.  Normally it's not necessary to call <code>close()</code> directly, but you can call it manually like so:</p>
-<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="nx">countdown</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nx">c.next</span><span class="p">()</span>
-<span class="nx">Counting</span> <span class="nb">down</span> <span class="nb">from</span> <span class="mi">5</span>
-<span class="mi">5</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nx">c.next</span><span class="p">()</span>
-<span class="mi">4</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nx">c.close</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nx">c.next</span><span class="p">()</span>
-<span class="nx">Traceback</span> <span class="p">(</span><span class="nx">most</span> <span class="nx">recent</span> <span class="nb">call</span> <span class="nb">last</span><span class="p">):</span>
-<span class="nb">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">1</span><span class="p">,</span> <span class="k">in</span> <span class="o">&lt;</span><span class="nx">module</span><span class="o">&gt;</span>
-<span class="nx">StopIteration</span>
+<div class="codehilite"><pre><span></span>&gt;&gt;&gt; c = countdown(5)
+&gt;&gt;&gt; c.next()
+Counting down from 5
+5
+&gt;&gt;&gt; c.next()
+4
+&gt;&gt;&gt; c.close()
+&gt;&gt;&gt; c.next()
+Traceback (most recent call last):
+File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+StopIteration
 </pre></div>
 
 

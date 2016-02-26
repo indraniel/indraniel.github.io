@@ -121,7 +121,7 @@ Generators
 
 Whenever a function uses the `yield` keyword, it defines a _generator_ object.  A generator is a function that produces a sequence of values for use in iteration.  For example,
 
-    :::!#python
+    :::python
     def countdown(n):
         print("Counting down from {}".format(n))
         while n > 0:
@@ -153,6 +153,7 @@ A generator function signals its completion by returning or raising a `StopItera
 
 A subtle problem with generators happens when a generator is partially consumed.  An example scenario is:
 
+    :::python
     for n in countdown(5):
         if n == 2: break
         # otherwise, do more stuff...
