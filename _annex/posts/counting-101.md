@@ -1,10 +1,16 @@
-title: Counting 101 - Permuations & Combinations
+title: Counting 101 - Permutations & Combinations
 date: 2013-12-26 12:00:00
 has_mathjax: 1
 
+<center>
+    <img alt="Sesame Street's 'The Count'" src="https://static-secure.guim.co.uk/sys-images/Media/Pix/pictures/2009/11/9/1257758922191/Sesame-Street-the-Count-001.jpg">
+</center>
+
+_I always forget the fundementals of counting.  Hopefully this post can serve as useful reminder for me._
+
 If you have three socks, two pairs of pants and four shirts, how many outfits
 can you wear? Counting questions like this happen a lot in the everyday world.
-*Combinatorics*, the mathematics of counting, can help in answering these
+*[Combinatorics][2]*, the mathematics of counting, can help in answering these
 questions.
 
 Counting can be organized into two cases: _permutations_ and _combinations_.
@@ -15,22 +21,31 @@ the order doesn't matter, it's a **combination**.  If order does matter, it's a
 Combinations and permutations can be illustrated with these two examples:
 
 * **"I'm having a Bacon-Lettuce-Tomato Sandwich today."**  You don't care what
-  order the Bacon, Letttuce and Tomato are placed onto the sandwich, it'll
+  order the Bacon, Lettuce and Tomato are placed onto the sandwich, it'll
   still be the same type of sandwich.
 
 * **"The combination to the safe was 496"**.  Here you definitely care about the
   order.  "649" and "694"  wouldn't open the safe; it has to be exactly
   **4-9-6**.
+    
+    <center>
+    <figure>
+        <img src="http://ecx.images-amazon.com/images/I/411FE4A25ZL._SY300_.jpg">
+        <figcaption>
+        Combination Locks should really be called "Permuation Locks"!
+        </figcaption>
+    </figure>
+    </center>
 
-Think of _"**P**ermutation is **P**osition"_ as a useful nemonic to help you
+Think of _"**P**ermutation is **P**osition"_ as a useful mnemonic to help you
 distinguish between the two cases.
 
 Permutations
 ------------
 
-Within permutations there are two types: _reptition_ and _no repetition_.
+Within permutations there are two types: _repetition_ and _no repetition_.
 
-* _Reptition_ happens when items _can_ be counted more than once.  For example, a
+* _Repetition_ happens when items _can_ be counted more than once.  For example, a
   three-digit combination to a safe could be "333".
 
 * _No repetition_ happens when items _cannot_ be counted more than once.  For
@@ -60,8 +75,12 @@ $n$ possibilities for the second choice, and so on for $r$ times.
 ### Permutations without Repetition
 
 Without repetition happens in situations, when you can't reuse things that have
-already been choosen. In this case, you have to _reduce_ the number of choices
+already been chosen. In this case, you have to _reduce_ the number of choices
 available to you after each selection. 
+
+<center>
+<img alt="Ice Cream Flavors" src="https://usatftw.files.wordpress.com/2015/09/olympic-winners-podium-007.jpg">
+</center>
 
 For example, how many ways can you rank 5 people (Joe, Bob, Alice, Mary, &
 Frank) in a race? After choosing, say, Frank, then you can't choose him again.
@@ -122,6 +141,10 @@ Similar to permutations, combinations have two flavors: _reptition_ and _no repe
 Combinations without repetition is like the lottery.  Numbers are drawn one at
 a time, and if you have the lucky numbers (no matter the order) you win!
 
+<center>
+<img alt="Ice Cream Flavors" src="http://cdn.moneycrashers.com/wp-content/uploads/2008/04/lottery-balls-cash.jpg">
+</center>
+
 Consider the case when 3 numbers, say 1, 2, & 3 are chosen from a lottery
 event.  The possibilities from choosing these number from three picks are:
 
@@ -166,7 +189,7 @@ Notice how the permutation possibilities are 6 times or ($3!$ times) the
 combination possibilities.
 
 Intuitively, to get a count of the combination of things you need to
-*reduce it** by the number ways things can be permuted.  So, mathematically we
+**reduce it** by the number ways things can be permuted.  So, mathematically we
 can adjust the permutation formula as follows:
 
 <div class="well">
@@ -195,6 +218,29 @@ the number of ways to throw away 2 balls out of 5.
 
 ### Combinations with repetition
 
+<center>
+<img alt="Ice Cream Flavors" src="http://www.previewbd.com/admin/uploads/project_image/142772156320100401-ice-cream-parlor-600x411.jpg">
+</center>
+
+Let's pretend that there are 5 flavors of ice cream at the ice cream parlor:  mint, chocolate, lemon, strawberry, and vanilla.
+
+We'd like to get a [banana split][1] with 3 scoops of ice cream. How many banana split variations are possible?
+
+Let's use single letters for the flavors: `{m, c, l, s, v}`.
+
+Example variations can be:
+
+* `{c, c, c}` *(3 scoops of chocolate)*
+* `{m, l, v}` *(a single scoop of mint, lemon, and vanilla)*
+* `{m, v, v}` *(1 mint scoop, and 2 scoops of vanilla)*
+
+There are **$n=5$** ice cream flavors to choose from, and we can choose any **$r=3$** of them.  _Order doesn't matter, and we can repeat!_
+
+One way to reason about counting the number of scoop variations is to think of the ice creams being in a "train of boxes" like so:
+
+
+
+
 Useful Tips
 -----------
 
@@ -208,3 +254,5 @@ manageable number of familiar subproblems.  Divide and conquer.  This way
 you're less likely to make a mistake.
 
 [factorial]: http://en.wikipedia.org/wiki/Factorial
+[1]: https://en.wikipedia.org/wiki/Banana_split
+[2]: https://en.wikipedia.org/wiki/Combinatorics
