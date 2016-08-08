@@ -6,6 +6,18 @@
         <link>http://indraniel.github.io</link>
         <atom:link href="http://indraniel.github.io/all.rss.xml" rel="self" type="application/rss+xml" />
         <item>
+            <title>Distinguishing Facts and Opinions</title>
+            <description>&lt;blockquote&gt;
+&lt;p&gt;It&#39;s important to remember that even when successful people say things, they&#39;re often just opinions, not facts.  Starbucks&#39; CEO Howard Schultz once told Jeff Bezos of Amazon, &#34;You have no physical presence.  That is going to hold you back.&#34;  The reality was that not having a physical presence at that time is what propelled Amazon forward.&lt;/p&gt;
+&lt;p&gt;&amp;mdash; &lt;cite&gt;(story from &lt;a href=&#34;http://amzn.to/29c6xA4&#34;&gt;The Everything Store:  Jeff Bezos and the Age of Amazon&lt;/a&gt;)&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Everyday we&#39;re inundated with &#34;advice&#34;: the best way to stay fit, the best way to eat, the best way to achieve a goal, and so on.  How much of this &#34;advice&#34; is considered true because someone influential said it and others have just mindlessly propagated it?&lt;/p&gt;
+&lt;p&gt;Remember to &lt;a href=&#34;https://indraniel.github.io/thinking-basics/&#34;&gt;think&lt;/a&gt;, question and experiment.&lt;/p&gt;</description>
+            <pubDate>Mon, 08 Aug 2016 12:00:00 GMT</pubDate>
+            <link>http://indraniel.github.io/distinguishing-facts-from-opinions/</link>
+            <guid isPermaLink="true">http://indraniel.github.io/distinguishing-facts-from-opinions/</guid>
+        </item>
+        <item>
             <title>Appreciating Long-Tailed Distributions</title>
             <description>&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Heavy-tailed_distribution&#34;&gt;Long-Tailed Distributions&lt;/a&gt; (or power-law distributions) are everywhere; they&#39;re especially observable in the social sciences, for example: &lt;/p&gt;
 &lt;ul&gt;
